@@ -1,9 +1,17 @@
 package com.example.monitor;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.Objects;
 
+@Entity(tableName = "earthquakes")
 public class Earthquake {
 
+    @PrimaryKey
+    @NonNull
     private String id;
     private String place;
     private double magnitude;
@@ -11,8 +19,7 @@ public class Earthquake {
     private double latitude;
     private double longitude;
 
-    public Earthquake(String id, String place, double magnitude, long
-            time, double latitude, double longitude) {
+    public Earthquake(String id, String place, double magnitude, long time, double latitude, double longitude) {
         this.id = id;
         this.place = place;
         this.magnitude = magnitude;
@@ -50,10 +57,7 @@ public class Earthquake {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Earthquake that = (Earthquake) o;
-        return Double.compare(that.magnitude, magnitude) == 0
-                && time == that.time && Double.compare(that.latitude, latitude) == 0
-                && Double.compare(that.longitude, longitude) == 0 && id.equals(that.id)
-                && place.equals(that.place);
+        return Double.compare(that.magnitude, magnitude) == 0 && time == that.time && Double.compare(that.latitude, latitude) == 0 && Double.compare(that.longitude, longitude) == 0 && id.equals(that.id) && place.equals(that.place);
     }
 
     @Override
